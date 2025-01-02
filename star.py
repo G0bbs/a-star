@@ -76,16 +76,15 @@ def setGridToValue(screen: pygame.display, value: int):
 running: bool = True
 while running:
     screen.fill((255, 240, 210))
+    middleLineH = pygame.Rect(0, currentScreenHeight/2, currentScreenWidth, 3)
+    pygame.draw.rect(screen, black, middleLineH)
+    middleLineV = pygame.Rect(currentScreenWidth/2, 0, 3, currentScreenHeight)
+    pygame.draw.rect(screen, black, middleLineV)
     lastTime= time.time()
     screen.blit(font_30.render(str(time.time()-lastTime), True, (0, 0, 0)), (0, 0))
     screen.blit(font_20.render("Controls: Click to create barriers, right click to clear", True, (0, 0, 0)), (PIN_X, 0))
     screen.blit(font_20.render("          Press e to place start, q to place end", True, (0, 0, 0)), (PIN_X, 20))    
     updateGrid(screen)
-    
-    middleLineH = pygame.Rect(0, currentScreenHeight/2, currentScreenWidth, 3)
-    pygame.draw.rect(screen, black, middleLineH)
-    middleLineV = pygame.Rect(currentScreenWidth/2, 0, 3, currentScreenHeight)
-    pygame.draw.rect(screen, black, middleLineV)
     
     clear_button = pygame.Rect(PIN_X, PIN_Y+CELL_HEIGHT*len(grid[0]), 30, 30)
     pygame.draw.rect(screen, (255, 0, 0), clear_button)
